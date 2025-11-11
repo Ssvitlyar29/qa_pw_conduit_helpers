@@ -5,7 +5,11 @@ import { signUpUser } from '../../src/ui/actions/auth/signUpUser';
 import { createNewArticle } from '../../src/ui/actions/article/createNewArticle';
 import { ViewArticlePage } from '../../src/ui/pages/article/ViewArticlePage';
 import { EditArticlePage } from '../../src/ui/pages/article/EditArticlePage';
-import { TITLE_CANNOT_BE_EMPTY } from '../../src/ui/constants/articleErrorMessages';
+import {
+    TITLE_CANNOT_BE_EMPTY,
+    DESCRIPTION_CANNOT_BE_EMPTY,
+    TEXT_CANNOT_BE_EMPTY
+} from '../../src/ui/constants/articleErrorMessages';
 
 test.describe('Edit article negative tests', () => {
     let viewArticlePage;
@@ -39,8 +43,8 @@ test.describe('Edit article negative tests', () => {
         await editArticlePage.clearDescriptionField();
         await editArticlePage.clickUpdateArticleButton();
 
-        await viewArticlePage.assertArticleTitleIsVisible(article.title);
-        await viewArticlePage.assertArticleTextIsVisible(article.text);
+        await editArticlePage.
+            assertErrorMessageContainsText(DESCRIPTION_CANNOT_BE_EMPTY);
     });
 
     test('Remove the article text for the existing article', async () => {
@@ -49,8 +53,7 @@ test.describe('Edit article negative tests', () => {
         await editArticlePage.clearTextField();
         await editArticlePage.clickUpdateArticleButton();
 
-        await viewArticlePage.assertArticleTitleIsVisible(article.title);
-        await viewArticlePage.
-            assertArticleDescriptionIsVisible(article.description);
+        await editArticlePage.
+            assertErrorMessageContainsText(TEXT_CANNOT_BE_EMPTY);
     });
 });

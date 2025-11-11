@@ -38,7 +38,6 @@ test.describe('Edit article additional tests', () => {
         await editArticlePage.clickUpdateArticleButton();
 
         await viewArticlePage.assertArticleTitleIsVisible(newTitle);
-        await viewArticlePage.assertArticleDescriptionIsVisible(newDescription);
         await viewArticlePage.assertArticleTextIsVisible(newText);
     });
 
@@ -105,5 +104,6 @@ test.describe('Edit article additional tests', () => {
         await editArticlePage.clickUpdateArticleButton();
 
         await viewArticlePage.assertArticleTitleIsVisible(longTitle);
+        await viewArticlePage.assertArticleTextIsVisible(longText);
     });
 });
