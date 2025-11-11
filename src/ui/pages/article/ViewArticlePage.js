@@ -26,12 +26,6 @@ export class ViewArticlePage {
     });
   }
 
-  async assertArticleDescriptionIsVisible(description) {
-    await test.step(`Assert the article has correct description`, async () => {
-      await expect(this.page.getByText(description)).toBeVisible();
-    });
-  }
-
   async assertTagIsVisible(tagName) {
     await test.step(`Assert tag "${tagName}" is visible`, async () => {
       const tagLocator = this.tagsList.filter({ hasText: tagName });

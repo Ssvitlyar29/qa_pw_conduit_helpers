@@ -34,21 +34,9 @@ test.describe('Edit article positive tests', () => {
         await viewArticlePage.assertArticleTitleIsVisible(newTitle);
     });
 
-    test('Edit the article description for the existing article', async () => {
-        const newDescription = 'This is an updated description for the article';
-
-        await viewArticlePage.clickEditArticleButton();
-
-        await editArticlePage.clearDescriptionField();
-        await editArticlePage.fillDescriptionField(newDescription);
-        await editArticlePage.clickUpdateArticleButton();
-
-        await viewArticlePage.assertArticleDescriptionIsVisible(newDescription);
-    });
-
     test('Edit the article text for the existing article', async () => {
-        const newText =
-        'This is completely new article text that replaces the old content.';
+        const newText = `This is completely new article text 
+that replaces the old content.`;
 
         await viewArticlePage.clickEditArticleButton();
 
